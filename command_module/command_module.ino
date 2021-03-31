@@ -1,7 +1,17 @@
 String input;
+int fuel_module = A0;
+int temp_module = A7;
+int oxy_module = A1;
+int comm_module = A2;
+int power_module = A3;
+bool everything_okay;
 
 void setup() {
-  // put your setup code here, to run once:
+  pinMode(fuel_module, INPUT);
+  pinMode(temp_module, INPUT);
+  pinMode(oxy_module, INPUT);
+  pinMode(comm_module, INPUT);
+  pinMode(power_module, INPUT);
   Serial.begin(9600);
   clearscreen();
   print_welcome();
@@ -97,30 +107,100 @@ void command_log(){
 }
 
 void command_sr(){
-    Serial.println("+---------------+------------+--------------+");
-    Serial.println("|    MODULE     | CONNECTED  | STATUS       |");
-    Serial.println("+---------------+------------+--------------+");
-    Serial.println("| OXYGEN SUPPLY | YES        | OK           |");
-    Serial.println("| MEMORY        | -          | MANUAL MODE  |");
-    Serial.println("| ENGINE HEAT   | NO         | -            |");
-    Serial.println("| FUEL          | NO         | -            |");
-    Serial.println("| POWER DISTRO  | NO         | -            |");
-    Serial.println("| COMMUNICATION | NO         | -            |");
-    Serial.println("+---------------+------------+--------------+");
+    everything_okay = true;
+      Serial.println(F("+---------------+------------+--------------+"));
+      Serial.println(F("|    MODULE     | CONNECTED  | STATUS       |"));
+      Serial.println(F("+---------------+------------+--------------+"));
+    
+    int oxy_module_status = pulseIn(oxy_module,HIGH);
+    Serial.println(oxy_module_status);
+    if (oxy_module_status == 0){
+      Serial.println(F("| OXYGEN SUPPLY | NO         | -            |"));
+      everything_okay = false;
+    }
+    else if (oxy_module_status > 0 && oxy_module_status < 3000){
+      Serial.println(F("| OXYGEN SUPPLY | YES        | FAULT        |"));
+      everything_okay = false;
+    }
+    else if (oxy_module_status > 3000){
+      Serial.println(F("| OXYGEN SUPPLY | YES        | OK           |"));
+    }
+
+    int temp_module_status = pulseIn(temp_module,HIGH);
+    if (temp_module_status == 0){
+      Serial.println(F("| ENGINE TEMP   | NO         | -            |"));
+      everything_okay = false;
+    }
+    else if (temp_module_status > 0 && oxy_module_status < 3000){
+      Serial.println(F("| ENGINE TEMP   | YES        | FAULT        |"));
+      everything_okay = false;
+    }
+    else if (temp_module_status > 3000){
+      Serial.println(F("| ENGINE TEMP   | YES        | OK           |"));
+    }
+    
+    int fuel_module_status = pulseIn(fuel_module,HIGH);
+    if (fuel_module_status == 0){
+      Serial.println(F("| FUEL          | NO         | -            |"));
+      everything_okay = false;
+    }
+    else if (fuel_module_status > 0 && oxy_module_status < 3000){
+      Serial.println(F("| FUEL          | YES        | FAULT        |"));
+      everything_okay = false;
+    }
+    else if (fuel_module_status > 3000){
+      Serial.println(F("| FUEL          | YES        | OK           |"));
+    }
+
+    int power_module_status = pulseIn(power_module,HIGH);
+    if (power_module_status == 0){
+      Serial.println(F("| POWER DISTRO  | NO         | -            |"));
+      everything_okay = false;
+    }
+    else if (power_module_status > 0 && oxy_module_status < 3000){
+      Serial.println(F("| POWER DISTRO  | YES        | FAULT        |"));
+      everything_okay = false;
+    }
+    else if (power_module_status > 3000){
+      Serial.println(F("| POWER DISTRO  | YES        | OK           |"));
+    }
+
+    int comm_module_status = pulseIn(comm_module,HIGH);
+    if (comm_module_status == 0){
+      Serial.println(F("| COMMUNICATION | NO         | -            |"));
+      everything_okay = false;
+    }
+    else if (comm_module_status > 0 && oxy_module_status < 3000){
+      Serial.println(F("| COMMUNICATION | YES        | FAULT        |"));
+      everything_okay = false;
+    }
+    else if (comm_module_status > 3000){
+      Serial.println(F("| COMMUNICATION | YES        | OK           |"));
+    }
+    
+    Serial.println(F("| MEMORY        | -          | MANUAL MODE  |"));  
+    Serial.println(F("+---------------+------------+--------------+"));
 }
 void command_launch(){
-  for (int i = 10; i >= 0; i--) {
+  if (everything_okay == true){
+      for (int i = 10; i >= 0; i--) {
+        clearscreen();
+        Serial.print("...");
+        Serial.println(i);
+        delay(1000);
+    }
     clearscreen();
-    Serial.print("...");
-    Serial.println(i);
+    Serial.println("LIFT OFF!");
     delay(1000);
+    clearscreen();
+    win();
+    delay(100000);
+    
   }
-  clearscreen();
-  Serial.println("LIFT OFF!");
-  delay(1000);
-  clearscreen();
-  win();
-  delay(100000);
+  else{
+    Serial.println("UNABLE TO LAUNCH. RUN STATUS REPORT TO PERFORM SYSTEM CHECK.");
+  }
+
 }
 
 void win(){
