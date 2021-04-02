@@ -49,11 +49,11 @@ void clearscreen(){
 }
 void print_welcome(){
   Serial.println(F(" _      _____  ___  ___  "));
-  Serial.println(F("| |    /  __ \ |  \/  |  "));
-  Serial.println(F("| |    | /  \/ | .  . |  "));
-  Serial.println(F("| |    | |     | |\/| |  "));
-  Serial.println(F("| |____| \__/\_| |  | |_ "));
-  Serial.println(F("\_____(_)____(_)_|  |_(_)"));
+  Serial.println(F("| |    /  __ \\ |  \\/  |  "));
+  Serial.println(F("| |    | /  \\/ | .  . |  "));
+  Serial.println(F("| |    | |     | |\\/| |  "));
+  Serial.println(F("| |____| \\__/\\_| |  | |_ "));
+  Serial.println(F("\\_____(_)____(_)_|  |_(_)"));
   Serial.println(F(""));
   Serial.println(F("Launch Control Module v1.3.37"));
   Serial.println(F(""));
@@ -113,7 +113,6 @@ void command_sr(){
       Serial.println(F("+---------------+------------+--------------+"));
     
     int oxy_module_status = pulseIn(oxy_module,HIGH);
-    Serial.println(oxy_module_status);
     if (oxy_module_status == 0){
       Serial.println(F("| OXYGEN SUPPLY | NO         | -            |"));
       everything_okay = false;

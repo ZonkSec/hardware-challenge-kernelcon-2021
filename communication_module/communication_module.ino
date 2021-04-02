@@ -1,32 +1,33 @@
-const int pulsePin = 2; // Input signal connected to Pin 8 of Arduino
+#include <FreqMeasure.h>
+const int led = 10;
 
-int pulseHigh; // Integer variable to capture High time of the incoming pulse
-int pulseLow; // Integer variable to capture Low time of the incoming pulse
-float pulseTotal; // Float variable to capture Total time of the incoming pulse
-float frequency; // Calculated Frequency
-
-void setup()
-{
-    Serial.begin(115200); // Initialize the serial
-    pinMode(pulsePin,INPUT);
-    delay(5000);
+void setup() {
+  Serial.begin(9600);
+  FreqMeasure.begin();
+  pinMode(led,OUTPUT);
 }
-void loop()
-{
-    pulseHigh = pulseIn(pulsePin,HIGH);
-    pulseLow = pulseIn(pulsePin,LOW);
-    
-    pulseTotal = pulseHigh + pulseLow; // Time period of the pulse in microseconds
-    frequency=1000000/pulseTotal; // Frequency in Hertz (Hz)
 
-    Serial.print(frequency);
-    Serial.print(" Hz");
-    if (frequency > 90 && frequency < 110) {
-      Serial.println(" | OK");
+double sum=0;
+int count=0;
+
+void loop() {
+  if (FreqMeasure.available()) {
+    // average several reading together
+    sum = sum + FreqMeasure.read();
+    count = count + 1;
+    if (count > 30) {
+      float frequency = FreqMeasure.countToFrequency(sum / count);
+      Serial.println(frequency);
+      if (frequency > 5 && frequency < 15) {
+        Serial.println("%COMMS_MODULE%OK%123456abcdf%");
+        digitalWrite(led,HIGH);
+      }
+      else {
+        Serial.println("%COMMS_MODULE%FAULT%");
+        digitalWrite(led,LOW);
+      }
+      sum = 0;
+      count = 0;
     }
-    else {
-      Serial.println(" | FAULT");
-    }
-    
-    delay(500);
+  }
 }
