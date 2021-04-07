@@ -74,6 +74,7 @@ void command_log(){
     Serial.println("3 ENGINE HEAT");
     Serial.println("4 FUEL");
     Serial.println("5 POWER DISTRO");
+    Serial.println("6 OXYGEN");
     Serial.println("");
     Serial.print("SELECT MODULE: ");
     while(!Serial.available() ){}
@@ -90,8 +91,8 @@ void command_log(){
       Serial.println("10/26/2556 0657 UTC: MEMORY MODULE IS COMPLETELEY DESTROYED. WE'LL NEED TO RECOVER DATA  AND INPUT USING MANUAL MODE");
     }
     else if (input == "3"){
-      Serial.println("ENGINE HEAT LOG");
-      Serial.println("10/26/2556 0657 UTC: ENGINES CAN PRIME WITHOUT THE PROPER HEAT. SOMETHING MIGHT BE WRONG IN SENSING CIRCUIT");
+      Serial.println("TEMP LOG");
+      Serial.println("10/26/2556 0657 UTC: ENGINES CAN PRIME WITHOUT THE PROPER HEAT. SOMETHING MIGHT BE WRONG IN SENSING CIRCUIT. THAT LAST WORMHOLE WAS FLIPPY!");
     }
     else if (input == "4"){
       Serial.println("FUEL LOG");
@@ -99,7 +100,11 @@ void command_log(){
     }
     else if (input == "5"){
       Serial.println("POWER DISTRO LOG");
-      Serial.println("10/26/2556 0657 UTC: THIS CIRCUIT WAS DAMAGED BEYOND REPAIR, SO WE RECREATED THE BOARD FROM THE ORIGINAL SCHEMATIC (WHICH IS ATTACHED TO MODULE) AND IT DOESNT WORK, MAYBE WE DID SOMETHING WRONG?");
+      Serial.println("10/26/2556 0657 UTC: THIS CIRCUIT WAS DAMAGED BEYOND REPAIR, SO WE RECREATED THE BOARD FROM THE ORIGINAL SCHEMATIC (WHICH IS ATTACHED TO MODULE). WE HAD A GROUND ERRO AND FIXED IT, BUT IT DOESNT WORK STILL, MAYBE WE DID SOMETHING WRONG?");
+    }
+    else if (input == "6"){
+      Serial.println("OXYGEN LOG");
+      Serial.println("10/26/2556 0657 UTC: NO ISSUES. THANK THE MAKER!");
     }
     else{
       Serial.println("UNKOWN LOG");
