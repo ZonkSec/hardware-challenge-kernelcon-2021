@@ -1,9 +1,9 @@
 String input;
-int fuel_module = A0;
-int temp_module = A7;
+int fuel_module = A2;
+int temp_module = A0;
 int oxy_module = A1;
-int comm_module = A2;
-int power_module = A3;
+int comm_module = A3;
+int power_module = A4;
 bool everything_okay;
 
 void setup() {
@@ -135,7 +135,7 @@ void command_sr(){
       Serial.println(F("| ENGINE TEMP   | NO         | -            |"));
       everything_okay = false;
     }
-    else if (temp_module_status > 0 && oxy_module_status < 3000){
+    else if (temp_module_status > 0 && temp_module_status < 3000){
       Serial.println(F("| ENGINE TEMP   | YES        | FAULT        |"));
       everything_okay = false;
     }
@@ -148,7 +148,7 @@ void command_sr(){
       Serial.println(F("| FUEL          | NO         | -            |"));
       everything_okay = false;
     }
-    else if (fuel_module_status > 0 && oxy_module_status < 3000){
+    else if (fuel_module_status > 0 && fuel_module_status < 3000){
       Serial.println(F("| FUEL          | YES        | FAULT        |"));
       everything_okay = false;
     }
@@ -161,7 +161,7 @@ void command_sr(){
       Serial.println(F("| POWER DISTRO  | NO         | -            |"));
       everything_okay = false;
     }
-    else if (power_module_status > 0 && oxy_module_status < 3000){
+    else if (power_module_status > 0 && power_module_status < 3000){
       Serial.println(F("| POWER DISTRO  | YES        | FAULT        |"));
       everything_okay = false;
     }
@@ -174,7 +174,7 @@ void command_sr(){
       Serial.println(F("| COMMUNICATION | NO         | -            |"));
       everything_okay = false;
     }
-    else if (comm_module_status > 0 && oxy_module_status < 3000){
+    else if (comm_module_status > 0 && comm_module_status < 3000){
       Serial.println(F("| COMMUNICATION | YES        | FAULT        |"));
       everything_okay = false;
     }

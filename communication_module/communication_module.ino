@@ -17,13 +17,13 @@ void loop() {
     count = count + 1;
     if (count > 30) {
       float frequency = FreqMeasure.countToFrequency(sum / count);
-      Serial.println(frequency);
+      //Serial.println(frequency);
       if (frequency > 5 && frequency < 15) {
-        Serial.println("%COMMS_MODULE%OK%123456abcdf%");
+        Serial.print("%COMMS_MODULE%OK%123456abcdf%\r");
         digitalWrite(led,HIGH);
       }
       else {
-        Serial.println("%COMMS_MODULE%FAULT%");
+        Serial.println("%COMMS_MODULE%FAULT%\r");
         digitalWrite(led,LOW);
       }
       sum = 0;
