@@ -5,6 +5,6 @@ void setup() {
 }
 
 void loop() {
-  Serial.print("%OXYGEN_MODULE%OK%123456abcdf%\r");
+  Serial.print("%OXYGEN_MODULE%OK%33fdd8f3ac0%\r");
   delay(5000);
 }

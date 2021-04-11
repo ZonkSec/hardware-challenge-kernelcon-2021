@@ -80,7 +80,7 @@ void loop() // run over and over
   }
   else{
     if (vlv1 && vlv2 && vlv3 && vlv4){
-      Serial.print("%FUEL_MODULE%OK%123456abcdf%\r");
+      Serial.print("%FUEL_MODULE%OK%3b429d7e669%\r");
     }
     else{
       Serial.print("%FUEL_MODULE%FAULT%\r");

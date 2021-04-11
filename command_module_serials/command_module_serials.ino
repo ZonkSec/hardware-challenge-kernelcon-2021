@@ -1,13 +1,13 @@
 //String module_name = "OXYGEN_MODULE";
-//String valid_signature = "123456abcdf";
+//String valid_signature = "33fdd8f3ac0";
 //String module_name = "FUEL_MODULE";
-//String valid_signature = "123456abcdf";
+//String valid_signature = "3b429d7e669";
 //String module_name = "COMMS_MODULE";
-//String valid_signature = "123456abcdf";
+//String valid_signature = "a49723307bb";
 //String module_name = "POWER_MODULE";
-//String valid_signature = "123456abcdf";
+//String valid_signature = "17f27f6b7b7";
 String module_name = "TEMP_MODULE";
-String valid_signature = "123456abcdf";
+String valid_signature = "5ce5a69ac3f";
 
 String input;
 int pin_lcm = 10;

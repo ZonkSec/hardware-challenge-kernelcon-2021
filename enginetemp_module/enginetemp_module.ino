@@ -27,7 +27,7 @@ void loop() {
     lcd.setCursor(0,1);
     lcd.print("STATUS OK       ");
 
-    Serial.print("%TEMP_MODULE%OK%123456abcdf%\r");
+    Serial.print("%TEMP_MODULE%OK%5ce5a69ac3f%\r");
   }
   else{
     

@@ -19,7 +19,7 @@ void loop() {
       float frequency = FreqMeasure.countToFrequency(sum / count);
       //Serial.println(frequency);
       if (frequency > 5 && frequency < 15) {
-        Serial.print("%COMMS_MODULE%OK%123456abcdf%\r");
+        Serial.print("%COMMS_MODULE%OK%5ce5a69ac3f%\r");
         digitalWrite(led,HIGH);
       }
       else {

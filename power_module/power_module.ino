@@ -97,7 +97,7 @@ void loop()
    }
    
    if (alltrue == true){
-    Serial.print("%POWER_MODULE%OK%123456abcdf%\r");
+    Serial.print("%POWER_MODULE%OK%17f27f6b7b7%\r");
    }
    else{
     Serial.print("%POWER_MODULE%FAULT%\r");
