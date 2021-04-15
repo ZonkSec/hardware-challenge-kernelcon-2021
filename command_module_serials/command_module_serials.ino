@@ -2,12 +2,12 @@
 //String valid_signature = "33fdd8f3ac0";
 //String module_name = "FUEL_MODULE";
 //String valid_signature = "3b429d7e669";
-String module_name = "COMMS_MODULE";
-String valid_signature = "a49723307bb";
+//String module_name = "COMMS_MODULE";
+//String valid_signature = "a49723307bb";
 //String module_name = "POWER_MODULE";
 //String valid_signature = "17f27f6b7b7";
-//String module_name = "TEMP_MODULE";
-//String valid_signature = "5ce5a69ac3f";
+String module_name = "TEMP_MODULE";
+String valid_signature = "5ce5a69ac3f";
 
 String input;
 int pin_lcm = 10;
@@ -32,7 +32,7 @@ void loop() {
     if (millis() - timeoutStart >= timeout){
       analogWrite(pin_lcm,0);
       timeoutStart = millis(); //reset the start time, so that this only runs every 10sec
-      Serial.println(module_name+ "_INTF: TIMEOUT. NOTHING CONNECTED");
+      //Serial.println(module_name+ "_INTF: TIMEOUT. NOTHING CONNECTED"); printing a timeout msg makes it too easy to find valid pins
     }
   }
   

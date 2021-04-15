@@ -5,6 +5,7 @@ int oxy_module = A1;
 int comm_module = A3;
 int power_module = A4;
 bool everything_okay;
+bool skip = false;
 
 void setup() {
   pinMode(fuel_module, INPUT);
@@ -24,17 +25,21 @@ void loop() {
   input = Serial.readStringUntil('\r');
   Serial.print("LCM> ");
   Serial.println(input);
-  if (input == "SR"){
+  if (input == "SR" || input == "sr"){
     command_sr();
   }
-  else if (input == "LOG"){
+  else if (input == "LOG" || input == "log"){
     command_log();
   }
-  else if (input == "HELP"){
+  else if (input == "HELP" || input == "help"){
     print_welcome();
   }
-  else if (input == "LAUNCH"){
+  else if (input == "LAUNCH" || input == "launch"){
     command_launch();
+  }
+  else if (input == "OMGeverythingisbrokenjustlaunch!"){
+    skip = true;
+    Serial.println("BUCKLE UP! WHO KNOWS IF THIS THING WILL WORK!");
   }
   else {
     Serial.println("UNKOWN COMMAND");
@@ -88,11 +93,11 @@ void command_log(){
     }
     else if (input == "2"){
       Serial.println("MEMORY LOG");
-      Serial.println("10/26/2556 0657 UTC: MEMORY MODULE IS COMPLETELEY DESTROYED. WE'LL NEED TO RECOVER DATA  AND INPUT USING MANUAL MODE");
+      Serial.println("10/26/2556 0657 UTC: MEMORY MODULE IS COMPLETELEY DESTROYED. WE'LL NEED TO RECOVER DATA AND INPUT USING MANUAL MODE");
     }
     else if (input == "3"){
       Serial.println("TEMP LOG");
-      Serial.println("10/26/2556 0657 UTC: ENGINES CAN PRIME WITHOUT THE PROPER HEAT. SOMETHING MIGHT BE WRONG IN SENSING CIRCUIT. THAT LAST WORMHOLE WAS FLIPPY!");
+      Serial.println("10/26/2556 0657 UTC: ENGINES CAN'T PRIME WITHOUT THE PROPER HEAT. SOMETHING MIGHT BE WRONG IN SENSING CIRCUIT. THAT LAST WORMHOLE WAS FLIPPY!");
     }
     else if (input == "4"){
       Serial.println("FUEL LOG");
@@ -100,7 +105,7 @@ void command_log(){
     }
     else if (input == "5"){
       Serial.println("POWER DISTRO LOG");
-      Serial.println("10/26/2556 0657 UTC: THIS CIRCUIT WAS DAMAGED BEYOND REPAIR, SO WE RECREATED THE BOARD FROM THE ORIGINAL SCHEMATIC (WHICH IS ATTACHED TO MODULE). WE HAD A GROUND ERRO AND FIXED IT, BUT IT DOESNT WORK STILL, MAYBE WE DID SOMETHING WRONG?");
+      Serial.println("10/26/2556 0657 UTC: THIS CIRCUIT WAS DAMAGED BEYOND REPAIR, SO WE RECREATED THE BOARD FROM THE ORIGINAL SCHEMATIC (WHICH IS ATTACHED TO MODULE). WE HAD A GROUND ERROR AND FIXED IT, BUT IT DOESNT WORK STILL, MAYBE WE DID SOMETHING WRONG?");
     }
     else if (input == "6"){
       Serial.println("OXYGEN LOG");
@@ -186,13 +191,13 @@ void command_sr(){
     Serial.println(F("+---------------+------------+--------------+"));
 }
 void command_launch(){
-  if (everything_okay == true){
+  if (everything_okay == true || skip == true){
     clearscreen();
     Serial.println("ENTER LAUNCH CODE:");
     while(!Serial.available() ){}
     input ="";
     input = Serial.readStringUntil('\r');
-    if (input == "LetsPopThisKernel!"){
+    if (input == "LetsPopThisKernel!" || input == "OMGeverythingisbrokenjustlaunch!"){
       for (int i = 10; i >= 0; i--) {
         clearscreen();
         Serial.print("...");
