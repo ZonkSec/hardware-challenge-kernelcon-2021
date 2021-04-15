@@ -187,6 +187,12 @@ void command_sr(){
 }
 void command_launch(){
   if (everything_okay == true){
+    clearscreen();
+    Serial.println("ENTER LAUNCH CODE:");
+    while(!Serial.available() ){}
+    input ="";
+    input = Serial.readStringUntil('\r');
+    if (input == "LetsPopThisKernel!"){
       for (int i = 10; i >= 0; i--) {
         clearscreen();
         Serial.print("...");
@@ -198,11 +204,15 @@ void command_launch(){
     delay(1000);
     clearscreen();
     win();
-    delay(100000);
+    delay(10000);
     
+    }
+    else{
+      Serial.println("INCORRECT LAUNCH CODE.");
+    }
   }
   else{
-    Serial.println("UNABLE TO LAUNCH. RUN STATUS REPORT TO PERFORM SYSTEM CHECK.");
+    Serial.println("UNABLE TO LAUNCH. MODULES NOT READY. RUN STATUS REPORT TO PERFORM SYSTEM CHECK.");
   }
 
 }
@@ -229,5 +239,5 @@ void win(){
     Serial.println(F(""));
     Serial.println(F(""));
     Serial.println(F(""));
-    //Serial.println(F("       THANKS FOR PLAYING JOE! -ZONKSEC"));
+    Serial.println(F("       THANKS FOR PLAYING JOE! -ZONKSEC"));
 }

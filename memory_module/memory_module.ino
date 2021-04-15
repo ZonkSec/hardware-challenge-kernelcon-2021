@@ -23,36 +23,35 @@ void setup()
   writeData(10,0x45); //E
   writeData(11,0x3a); //:
   writeData(12,0x20); //space
-  writeData(13,0x4b); //K
+  writeData(13,0x4c); //L
   writeData(14,0x65); //e
-  writeData(15,0x72); //r
-  writeData(16,0x6e); //n
-  writeData(17,0x65); //e
-  writeData(18,0x6c); //l
-  writeData(19,0x63); //c
-  writeData(20,0x6f); //o
-  writeData(21,0x6e); //n
-  writeData(22,0x54); //T
-  writeData(23,0x6f); //o
-  writeData(24,0x54); //T
-  writeData(25,0x68); //h
-  writeData(26,0x65); //e
-  writeData(27,0x4d); //M
-  writeData(28,0x6f); //o
-  writeData(29,0x6f); //o
-  writeData(30,0x6e); //n
-  writeData(31,0x21); //!
-  Serial.println("Complete");
+  writeData(15,0x74); //t
+  writeData(16,0x73); //s
+  writeData(17,0x50); //P
+  writeData(18,0x6f); //o
+  writeData(19,0x70); //p
+  writeData(20,0x54); //T
+  writeData(21,0x68); //h
+  writeData(22,0x69); //i
+  writeData(23,0x73); //s
+  writeData(24,0x4b); //K
+  writeData(25,0x65); //e
+  writeData(26,0x72); //r
+  writeData(27,0x6e); //n
+  writeData(28,0x65); //e
+  writeData(29,0x6c); //l
+  writeData(30,0x21); //!
+//  Serial.println("Complete");
 
   
   //read data back
   Serial.println("Reading data.");
-  for (int i=0; i<32; i++)
+  for (int i=0; i<100; i++)
   {
-    Serial.print(i);
-    Serial.print(" : ");
+    //Serial.print(i);
+    //Serial.print(" : ");
     d=readData(i);
-    Serial.println(char(d));
+    Serial.print(char(d));
   }
   Serial.println("Complete");
  
