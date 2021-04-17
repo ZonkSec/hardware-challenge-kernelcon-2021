@@ -17,7 +17,8 @@ int o6 = 10;
 bool alltrue = true;
 String outputString = "";
 
-char *answerStrings[] = {"100011","100011","100011","100011","100111","100111","100111","100111","100011","110011","101011","111011","100111","110111","101111","111111","100011","110011","101011","111011","100111","110111","101111","111111","100011","110011","101011","111011","100111","110111","101111","111111","100011","110011","101011","111011","100111","110111","101111","111111","100011","110011","101011","111011","100111","110111","101111","111111","100011","110011","101011","111011","100111","110111","101111","111111","100011","110011","101011","111011","100111","110111","101111","111111"};
+char *answerStrings[] = {"110011","110011","110011","110011","110111","110111","110111","110111","110011","110011","111011","111011","110111","110111","111111","111111","110011","110011","111011","111011","110111","110111","111111","111111","110011","110011","111011","111011","110111","110111","111111","111111","110011","110011","111011","111011","110111","110111","111111","111111","110011","110011","111011","111011","110111","110111","111111","111111","110011","110011","111011","111011","110111","110111","111111","111111","110011","110011","111011","111011","110111","110111","111111","111111"};
+
 void setup()
 {
   Serial.begin(9600); // Initialize the serial and setup pins
@@ -72,21 +73,21 @@ void checkOUTS(int i){
     alltrue = false;
 
     //print everything if false
-    //if (i<10) Serial.print('0');
-    //Serial.print(i);
-    //Serial.print(": ");Serial.print(outputString);
-    //Serial.print(" : ");
-    //Serial.print(answerStrings[i]);
-    //Serial.println(" : false");
+//    if (i<10) Serial.print('0');
+//    Serial.print(i);
+//    Serial.print(": ");Serial.print(outputString);
+//    Serial.print(" : ");
+//    Serial.print(answerStrings[i]);
+//    Serial.println(" : false");
   }
   else{
     //print everything if true
-    //if (i<10) Serial.print('0');
-    //Serial.print(i);
-    //Serial.print(": ");Serial.print(outputString);
-    //Serial.print(" : ");
-    //Serial.print(answerStrings[i]);
-    //Serial.println(" : true");
+//    if (i<10) Serial.print('0');
+//    Serial.print(i);
+//    Serial.print(": ");Serial.print(outputString);
+//    Serial.print(" : ");
+//    Serial.print(answerStrings[i]);
+//    Serial.println(" : true");
   }
   
   
