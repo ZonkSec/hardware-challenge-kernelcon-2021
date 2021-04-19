@@ -76,7 +76,7 @@ void command_log(){
     Serial.println("----------------------");
     Serial.println("1 COMMUNICATION");
     Serial.println("2 MEMORY");
-    Serial.println("3 ENGINE HEAT");
+    Serial.println("3 ENGINE TEMP");
     Serial.println("4 FUEL");
     Serial.println("5 POWER DISTRO");
     Serial.println("6 OXYGEN");

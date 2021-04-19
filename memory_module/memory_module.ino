@@ -5,42 +5,43 @@ byte d=0;
  
 void setup()
 {
-  Serial.begin(115200); // Initialize the serial
+  Serial.begin(9600); // Initialize the serial
   Wire.begin();
  
   //write data out
-  Serial.println("Writing data.");
-  writeData(0,0x4c); //L
-  writeData(1,0x41); //A
-  writeData(2,0x55); //U
-  writeData(3,0x4e); //N
-  writeData(4,0x43); //C
-  writeData(5,0x48); //H
-  writeData(6,0x20); //space
-  writeData(7,0x43); //C
-  writeData(8,0x4f); //O
-  writeData(9,0x44); //D
-  writeData(10,0x45); //E
-  writeData(11,0x3a); //:
-  writeData(12,0x20); //space
-  writeData(13,0x4c); //L
-  writeData(14,0x65); //e
-  writeData(15,0x74); //t
-  writeData(16,0x73); //s
-  writeData(17,0x50); //P
-  writeData(18,0x6f); //o
-  writeData(19,0x70); //p
-  writeData(20,0x54); //T
-  writeData(21,0x68); //h
-  writeData(22,0x69); //i
-  writeData(23,0x73); //s
-  writeData(24,0x4b); //K
-  writeData(25,0x65); //e
-  writeData(26,0x72); //r
-  writeData(27,0x6e); //n
-  writeData(28,0x65); //e
-  writeData(29,0x6c); //l
-  writeData(30,0x21); //!
+//  Serial.println("Writing data.");
+//  writeData(0,0x4c); //L
+//  writeData(1,0x41); //A
+//  writeData(2,0x55); //U
+//  writeData(3,0x4e); //N
+//  writeData(4,0x43); //C
+//  writeData(5,0x48); //H
+//  writeData(6,0x20); //space
+//  writeData(7,0x43); //C
+//  writeData(8,0x4f); //O
+//  writeData(9,0x44); //D
+//  writeData(10,0x45); //E
+//  writeData(11,0x3a); //:
+//  writeData(12,0x20); //space
+//  writeData(13,0x4c); //L
+//  writeData(14,0x65); //e
+//  writeData(15,0x74); //t
+//  writeData(16,0x73); //s
+//  writeData(17,0x50); //P
+//  writeData(18,0x6f); //o
+//  writeData(19,0x70); //p
+//  writeData(20,0x54); //T
+//  writeData(21,0x68); //h
+//  writeData(22,0x69); //i
+//  writeData(23,0x73); //s
+//  writeData(24,0x4b); //K
+//  writeData(25,0x65); //e
+//  writeData(26,0x72); //r
+//  writeData(27,0x6e); //n
+//  writeData(28,0x65); //e
+//  writeData(29,0x6c); //l
+//  writeData(30,0x21); //!
+//  writeData(31,0x00);
 //  Serial.println("Complete");
 
   
